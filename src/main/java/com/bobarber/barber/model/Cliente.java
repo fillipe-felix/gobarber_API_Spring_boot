@@ -24,7 +24,7 @@ public class Cliente implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
 
     private String email;
     private String nome;
@@ -40,12 +40,13 @@ public class Cliente implements Serializable {
     public Cliente() {
     }
 
-    public Cliente(Long id, String nome, String email, TipoCliente tipoCliente, String senha) {
+    public Cliente(Integer id, String nome, String email, TipoCliente tipoCliente, String senha) {
         this.id = id;
         this.nome = nome;
         this.email = email;
         this.tipoCliente = (tipoCliente == null) ? null : tipoCliente.getCod();
         this.senha = senha;
+        addPerfil(Perfil.CLIENTE);
     }
 
     public Set<Perfil> getPerfil() {
